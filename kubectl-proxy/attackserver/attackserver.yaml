@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: attackserver
+  name: attackserver
+  namespace: openfaas-fn
+spec:
+  type: LoadBalancer
+  ports:
+    - name: attackserver
+      port: 8889
+      targetPort: 80
+  selector:
+    app: attackserver
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: attackserver
+  namespace: openfaas-fn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: attackserver
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: attackserver
+    spec:
+      containers:
+        - image: jjhwan7099/attackserver:latest
+          name: attackserver
+          ports:
+            - containerPort: 8889
+              name: attackserver
+      restartPolicy: Always
+
