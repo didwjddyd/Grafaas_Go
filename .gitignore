@@ -22,3 +22,6 @@ go.work
 
 # pychache
 __pycache__
+
+#vscode
+.vscode
