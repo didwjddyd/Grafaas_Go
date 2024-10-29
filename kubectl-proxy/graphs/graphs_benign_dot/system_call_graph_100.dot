@@ -1,0 +1,56 @@
+digraph G {
+	subgraph "cluster_ product-purchase-publish-595676f698-vf472 " {
+		label=" product-purchase-publish-595676f698-vf472 "
+		39181 [label="node index.js"]
+		39181 -> 39287 [label=clone]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		39287 [label=22]
+	}
+	subgraph "cluster_ product-purchase-authorize-cc-7659c5bf76-h5tl8 " {
+		label=" product-purchase-authorize-cc-7659c5bf76-h5tl8 "
+		39869 [label="node index.js"]
+		39869 -> 40030 [label=clone]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		40030 [label=21]
+	}
+	subgraph "cluster_ product-purchase-86cd6d9484-qnjpd " {
+		label=" product-purchase-86cd6d9484-qnjpd "
+		40833 [label="node index.js"]
+		40833 -> 44079 [label=clone]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		40833 -> None [label=clone]
+		40833 -> None [label=clone]
+		40833 -> None [label=clone]
+		40833 -> None [label=clone]
+		44079 [label=22]
+	}
+	subgraph "cluster_ product-purchase-get-price-5784f547f4-tb4bk " {
+		label=" product-purchase-get-price-5784f547f4-tb4bk "
+		42383 [label="node index.js"]
+		42383 -> 42517 [label=clone]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		42517 [label=22]
+	}
+	subgraph cluster_services {
+		label=external_services
+		user [shape=house]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" [label=gateway]
+		40833 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		40833 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		40833 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+	}
+}

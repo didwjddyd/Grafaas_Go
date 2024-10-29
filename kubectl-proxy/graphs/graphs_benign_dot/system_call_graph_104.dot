@@ -1,0 +1,56 @@
+digraph G {
+	subgraph "cluster_ product-purchase-get-price-5784f547f4-cp962 " {
+		label=" product-purchase-get-price-5784f547f4-cp962 "
+		89848 [label="node index.js"]
+		89848 -> 89949 [label=clone]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		89949 [label=22]
+	}
+	subgraph "cluster_ product-purchase-publish-595676f698-8kz57 " {
+		label=" product-purchase-publish-595676f698-8kz57 "
+		90660 [label="node index.js"]
+		90660 -> 90792 [label=clone]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		90792 [label=22]
+	}
+	subgraph "cluster_ product-purchase-authorize-cc-7659c5bf76-zwlz4 " {
+		label=" product-purchase-authorize-cc-7659c5bf76-zwlz4 "
+		91886 [label="node index.js"]
+		91886 -> 92038 [label=clone]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		92038 [label=23]
+	}
+	subgraph "cluster_ product-purchase-86cd6d9484-8vh9k " {
+		label=" product-purchase-86cd6d9484-8vh9k "
+		93123 [label="node index.js"]
+		93123 -> 94590 [label=clone]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		93123 -> None [label=clone]
+		93123 -> None [label=clone]
+		93123 -> None [label=clone]
+		93123 -> None [label=clone]
+		94590 [label=22]
+	}
+	subgraph cluster_services {
+		label=external_services
+		user [shape=house]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" [label=gateway]
+		93123 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		93123 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		93123 -> "10.107.89.58_8080" [label=connect dir=both]
+	}
+}

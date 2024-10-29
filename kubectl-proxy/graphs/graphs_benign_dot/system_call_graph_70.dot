@@ -1,0 +1,88 @@
+digraph G {
+	subgraph "cluster_ product-purchase-authorize-cc-7659c5bf76-nphlc " {
+		label=" product-purchase-authorize-cc-7659c5bf76-nphlc "
+		40356 [label="node index.js"]
+		40356 -> 40584 [label=clone]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		40584 [label=23]
+	}
+	subgraph "cluster_ product-purchase-86cd6d9484-fj4zg " {
+		label=" product-purchase-86cd6d9484-fj4zg "
+		41070 [label="node index.js"]
+		41070 -> 43797 [label=clone]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		41070 -> None [label=clone]
+		41070 -> None [label=clone]
+		41070 -> None [label=clone]
+		41070 -> None [label=clone]
+		43797 [label=22]
+	}
+	subgraph "cluster_ product-purchase-get-price-5784f547f4-sztjd " {
+		label=" product-purchase-get-price-5784f547f4-sztjd "
+		41990 [label="node index.js"]
+		41990 -> 42173 [label=clone]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		42173 [label=23]
+	}
+	subgraph "cluster_ product-purchase-publish-595676f698-4dx7z " {
+		label=" product-purchase-publish-595676f698-4dx7z "
+		42799 [label="node index.js"]
+		42799 -> 42996 [label=clone]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		42996 [label=22]
+	}
+	subgraph cluster_services {
+		label=external_services
+		user [shape=house]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" [label=gateway]
+		41070 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		41070 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		41070 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.96.0.10_53" [label="kube-dns"]
+		43797 -> "10.96.0.10_53" [label=sendto]
+		"10.96.0.10_53" [label="kube-dns"]
+		43797 -> "10.96.0.10_53" [label=sendto]
+		"10.96.0.10_53" [label="kube-dns"]
+		"10.96.0.10_53" -> 43797 [label=recvfrom]
+		"10.96.0.10_53" [label="kube-dns"]
+		"10.96.0.10_53" -> 43797 [label=recvfrom]
+		"10.96.0.10_53" [label="kube-dns"]
+		43797 -> "10.96.0.10_53" [label=sendto]
+		"10.96.0.10_53" [label="kube-dns"]
+		43797 -> "10.96.0.10_53" [label=sendto]
+		"10.96.0.10_53" [label="kube-dns"]
+		"10.96.0.10_53" -> 43797 [label=recvfrom]
+		"10.96.0.10_53" [label="kube-dns"]
+		"10.96.0.10_53" -> 43797 [label=recvfrom]
+		"10.96.0.10_53" [label="kube-dns"]
+		43797 -> "10.96.0.10_53" [label=sendto]
+		"10.96.0.10_53" [label="kube-dns"]
+		43797 -> "10.96.0.10_53" [label=sendto]
+		"10.96.0.10_53" [label="kube-dns"]
+		"10.96.0.10_53" -> 43797 [label=recvfrom]
+		"10.96.0.10_53" [label="kube-dns"]
+		"10.96.0.10_53" -> 43797 [label=recvfrom]
+		"10.96.0.10_53" [label="kube-dns"]
+		43797 -> "10.96.0.10_53" [label=sendto]
+		"10.96.0.10_53" [label="kube-dns"]
+		43797 -> "10.96.0.10_53" [label=sendto]
+		"10.96.0.10_53" [label="kube-dns"]
+		"10.96.0.10_53" -> 43797 [label=recvfrom]
+		"10.96.0.10_53" [label="kube-dns"]
+		"10.96.0.10_53" -> 43797 [label=recvfrom]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+	}
+}

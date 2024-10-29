@@ -1,0 +1,56 @@
+digraph G {
+	subgraph "cluster_ product-purchase-authorize-cc-7659c5bf76-5txn9 " {
+		label=" product-purchase-authorize-cc-7659c5bf76-5txn9 "
+		97793 [label="node index.js"]
+		97793 -> 98033 [label=clone]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		98033 [label=22]
+	}
+	subgraph "cluster_ product-purchase-86cd6d9484-d2bpj " {
+		label=" product-purchase-86cd6d9484-d2bpj "
+		98555 [label="node index.js"]
+		98555 -> 2749 [label=clone]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		98555 -> None [label=clone]
+		98555 -> None [label=clone]
+		98555 -> None [label=clone]
+		98555 -> None [label=clone]
+		2749 [label=21]
+	}
+	subgraph "cluster_ product-purchase-get-price-5784f547f4-w5wqc " {
+		label=" product-purchase-get-price-5784f547f4-w5wqc "
+		99571 [label="node index.js"]
+		99571 -> 99669 [label=clone]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		99669 [label=23]
+	}
+	subgraph "cluster_ product-purchase-publish-595676f698-stmt5 " {
+		label=" product-purchase-publish-595676f698-stmt5 "
+		1235 [label="node index.js"]
+		1235 -> 1387 [label=clone]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		1387 [label=23]
+	}
+	subgraph cluster_services {
+		label=external_services
+		user [shape=house]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" [label=gateway]
+		98555 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		98555 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		98555 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+	}
+}

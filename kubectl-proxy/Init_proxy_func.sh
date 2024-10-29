@@ -18,6 +18,12 @@ kubectl delete -f ./grafaas-proxy/nginx-service.yaml -n openfaas
 
 echo "Grafaas-proxy deleted."
 
+# grafaas-proxy 삭제
+kubectl delete -f attackserver/attackserver.yaml
+kubectl delete -f attackserver/cc-db.yaml
+
+echo "attackserver and cc-db deleted."
+
 FUNC_NAMESPACE="openfaas-fn"
 CONTAINER_NAME="grafaas"
 
@@ -75,3 +81,52 @@ while true; do
     fi
 done
 
+ATK_SERVER_CONTAINER="attackserver"
+dots=1
+# Attackserver 컨테이너가 정상적으로 실행 중인지 확인
+while true; do
+    # 컨테이너 상태 확인
+    CONTAINER_STATUS=$(docker ps -f "name=$ATK_SERVER_CONTAINER" --format "{{.Status}}")
+
+    if [[ "$CONTAINER_STATUS" != *"Up"* ]]; then
+    printf "\n"
+        printf "$ATK_SERVER_CONTAINER 컨테이너가 정상적으로 삭제되었습니다.\n"
+        break
+    else
+        # 대기 중 메시지 출력
+        case $dots in
+            1) printf "\r$ATK_SERVER_CONTAINER 컨테이너가 아직 삭제되지 않았습니다. 대기 중.  " ;;
+            2) printf "\r$ATK_SERVER_CONTAINER 컨테이너가 아직 삭제되지 않았습니다. 대기 중.. " ;;
+            3) printf "\r$ATK_SERVER_CONTAINER 컨테이너가 아직 삭제되지 않았습니다. 대기 중... " ;;
+        esac
+
+        # dots 값 순환
+        dots=$(( (dots % 3) + 1 ))
+        sleep 0.5  # 0.5초 대기 후 다시 확인
+    fi
+done
+
+CC_DB_CONTAINER="cc-db"
+dots=1
+# cc-db 컨테이너가 정상적으로 실행 중인지 확인
+while true; do
+    # 컨테이너 상태 확인
+    CONTAINER_STATUS=$(docker ps -f "name=$CC_DB_CONTAINER" --format "{{.Status}}")
+
+    if [[ "$CONTAINER_STATUS" != *"Up"* ]]; then
+    printf "\n"
+        printf "$CC_DB_CONTAINER 컨테이너가 정상적으로 삭제되었습니다.\n"
+        break
+    else
+        # 대기 중 메시지 출력
+        case $dots in
+            1) printf "\r$CC_DB_CONTAINER 컨테이너가 아직 삭제되지 않았습니다. 대기 중.  " ;;
+            2) printf "\r$CC_DB_CONTAINER 컨테이너가 아직 삭제되지 않았습니다. 대기 중.. " ;;
+            3) printf "\r$CC_DB_CONTAINER 컨테이너가 아직 삭제되지 않았습니다. 대기 중... " ;;
+        esac
+
+        # dots 값 순환
+        dots=$(( (dots % 3) + 1 ))
+        sleep 0.5  # 0.5초 대기 후 다시 확인
+    fi
+done

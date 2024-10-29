@@ -138,6 +138,7 @@ process_clone_calls() {
 
 map_pid_clone() {
     for log_dir in /tmp/*/; do
+        echo $log_dir
         if [[ -f "$log_dir/clone_pid" ]]; then
             local clone_pids=$(cat "$log_dir/clone_pid")
             local log_file_numbers=()

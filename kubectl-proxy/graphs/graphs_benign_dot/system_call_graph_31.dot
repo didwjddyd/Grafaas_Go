@@ -1,0 +1,54 @@
+digraph G {
+	subgraph "cluster_ product-purchase-get-price-5784f547f4-5z226 " {
+		label=" product-purchase-get-price-5784f547f4-5z226 "
+		12345 [label="node index.js"]
+		12345 -> 12505 [label=clone]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		12505 [label=23]
+	}
+	subgraph "cluster_ product-purchase-publish-595676f698-z59qv " {
+		label=" product-purchase-publish-595676f698-z59qv "
+		13027 [label="node index.js"]
+		13027 -> 13236 [label=clone]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		13236 [label=23]
+	}
+	subgraph "cluster_ product-purchase-authorize-cc-7659c5bf76-xmjsz " {
+		label=" product-purchase-authorize-cc-7659c5bf76-xmjsz "
+		13754 [label="node index.js"]
+		13754 -> 13845 [label=clone]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		13845 [label=22]
+	}
+	subgraph "cluster_ product-purchase-86cd6d9484-nnnsj " {
+		label=" product-purchase-86cd6d9484-nnnsj "
+		14599 [label="node index.js"]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		14599 -> None [label=clone]
+		14599 -> None [label=clone]
+		14599 -> None [label=clone]
+		14599 -> None [label=clone]
+	}
+	subgraph cluster_services {
+		label=external_services
+		user [shape=house]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" [label=gateway]
+		14599 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		14599 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		14599 -> "10.107.89.58_8080" [label=connect dir=both]
+	}
+}

@@ -1,0 +1,64 @@
+digraph G {
+	subgraph "cluster_ product-purchase-authorize-cc-7659c5bf76-c8w28 " {
+		label=" product-purchase-authorize-cc-7659c5bf76-c8w28 "
+		95334 [label="node index.js"]
+		95334 -> 95366 [label=clone]
+		95334 -> 95375 [label=clone]
+		95334 -> 95382 [label=clone]
+		95334 -> 95411 [label=clone]
+		95334 -> 95419 [label=clone]
+		95334 -> 95468 [label=clone]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		"product-purchase-authorize-cc_localhost_3000" [label="localhost:3000"]
+		95366 [label=17]
+		95375 [label=18]
+		95382 [label=19]
+		95411 [label=20]
+		95419 [label=21]
+		95468 [label=22]
+	}
+	subgraph "cluster_ product-purchase-86cd6d9484-89s5r " {
+		label=" product-purchase-86cd6d9484-89s5r "
+		96019 [label="node index.js"]
+		96019 -> 98971 [label=clone]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		"product-purchase_localhost_3000" [label="localhost:3000"]
+		96019 -> None [label=clone]
+		96019 -> None [label=clone]
+		96019 -> None [label=clone]
+		96019 -> None [label=clone]
+		98971 [label=23]
+	}
+	subgraph "cluster_ product-purchase-get-price-5784f547f4-24fcr " {
+		label=" product-purchase-get-price-5784f547f4-24fcr "
+		96817 [label="node index.js"]
+		96817 -> 97006 [label=clone]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		"product-purchase-get-price_localhost_3000" [label="localhost:3000"]
+		97006 [label=22]
+	}
+	subgraph "cluster_ product-purchase-publish-595676f698-79rrm " {
+		label=" product-purchase-publish-595676f698-79rrm "
+		97687 [label="node index.js"]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+		"product-purchase-publish_localhost_3000" [label="localhost:3000"]
+	}
+	subgraph cluster_services {
+		label=external_services
+		user [shape=house]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-authorize-cc_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		user -> "product-purchase_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" [label=gateway]
+		96019 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		96019 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" [label=gateway]
+		96019 -> "10.107.89.58_8080" [label=connect dir=both]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-get-price_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+		"10.107.89.58_8080" -> "product-purchase-publish_localhost_3000" [label=accept4]
+	}
+}
